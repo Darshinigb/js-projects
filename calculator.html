@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<style>
+		table {
+			border-collapse: collapse;
+			margin: 20px auto;
+		}
+
+		td {
+			padding: 10px;
+			border: 1px solid black;
+			text-align: center;
+			font-size: 20px;
+			font-family: Arial, sans-serif;
+		}
+
+		input[type="text"] {
+			font-size: 20px;
+			padding: 10px;
+			width: 200px;
+			margin: 20px auto;
+			display: block;
+			text-align: right;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="result" disabled>
+	<table>
+		<tr>
+			<td><button onclick="updateResult('7')">7</button></td>
+			<td><button onclick="updateResult('8')">8</button></td>
+			<td><button onclick="updateResult('9')">9</button></td>
+			<td><button onclick="updateResult('/')">/</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="updateResult('4')">4</button></td>
+			<td><button onclick="updateResult('5')">5</button></td>
+			<td><button onclick="updateResult('6')">6</button></td>
+			<td><button onclick="updateResult('*')">*</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="updateResult('1')">1</button></td>
+			<td><button onclick="updateResult('2')">2</button></td>
+			<td><button onclick="updateResult('3')">3</button></td>
+			<td><button onclick="updateResult('-')">-</button></td>
+		</tr>
+		<tr>
+			<td><button onclick="updateResult('0')">0</button></td>
+			<td><button onclick="updateResult('.')">.</button></td>
+			<td><button onclick="clearResult()">C</button></td>
+			<td><button onclick="updateResult('+')">+</button></td>
+		</tr>
+		<tr>
+			<td colspan="4"><button onclick="calculate()">=</button></td>
+		</tr>
+	</table>
+
+	<script>
+		function updateResult(value) {
+			document.getElementById('result').value += value;
+		}
+
+		function clearResult() {
+			document.getElementById('result').value = '';
+		}
+
+		function calculate() {
+			var result = eval(document.getElementById('result').value);
+			document.getElementById('result').value = result;
+		}
+	</script>
+</body>
+</html>
