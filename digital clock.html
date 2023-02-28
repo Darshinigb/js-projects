@@ -1,36 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Digital Clock</title>
-  <style>
-    #clock {
-      font-size: 48px;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background-color: blue;
+        }
+
+        #Digitalclock {
+            position: absolute;
+            color: lime;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 60px;
+            font-family: Orbitron;
+            letter-spacing: 7px;
+        }
+    </style>
 </head>
-<body onload="startTime()">
-  <div id="clock"></div>
 
-  <script>
-    function startTime() {
-      var today = new Date();
-      var h = today.getHours();
-      var m = today.getMinutes();
-      var s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
-      var t = setTimeout(startTime, 1000);
-    }
+<body>
+    <div id="Digitalclock"  class="clock"></div>
 
-    function checkTime(i) {
-      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-      return i;
-    }
-  </script>
+    <script type="text/javascript">
+        
+        function showTime() {
+            let date = new Date();
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+            var session = "AM";
+
+
+            if (hour == 0) {
+                hr = 12;
+                session = "AM";
+            }
+            if (hour > 12) {
+                hour = hour - 12;
+                session = "PM";
+            }
+            
+            hour = hour < 10 ? "0" + hour : hour;
+            min = min < 10 ? "0" + min : min;
+            sec = sec < 10 ? "0" + sec : sec;
+
+            document.getElementById("Digitalclock").innerHTML = hour + ":"+ min + ":" + sec + session;
+            setTimeout(showTime,1000);
+        }
+        showTime();
+    </script>
 </body>
+
 </html>
